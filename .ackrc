@@ -1,1 +1,7 @@
 --color-match=black on_cyan
+--sort-files
+
+--type-add=js=json
+--type-add=ruby=haml,rake
+--type-add=css=sass
+--type-set=markdown=md,mkd,markdown

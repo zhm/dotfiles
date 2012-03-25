@@ -1,0 +1,25 @@
+[core]
+	excludesfile = ~/.gitignore
+	editor = mvim -f
+[color]
+ branch = auto
+ diff = auto
+ status = auto
+[color "branch"]
+ current = magenta bold
+ local = blue
+ remote = green
+[color "diff"]
+ meta = yellow
+ frag = magenta
+ old = red
+ new = cyan
+[color "status"]
+ added = cyan
+ changed = green
+ untracked = red
+[user]
+	name = Zac McCormick
+	email = zac.mccormick@gmail.com
+[github]
+	user = zhm
