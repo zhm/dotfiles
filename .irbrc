@@ -8,10 +8,17 @@ if defined?(::Bundler)
 end
 
 require 'interactive_editor'
-require 'irb/completion'
 require 'map_by_method'
 require 'what_methods'
 require 'pp'
+require 'irb/completion'
+require 'irb/ext/save-history'
+require 'wirble'
+require 'hirb'
+require 'awesome_print'
+
+Wirble.init
+Wirble.colorize
 
 class Object
   def local_methods(obj = self)
@@ -21,7 +28,25 @@ class Object
   # add a `p` method to all objects to pretty print
   unless self.respond_to? :p
     define_method :p do
-      pp self
+      ap self
+    end
+  end
+
+  unless self.respond_to? :t
+    define_method :t do
+      puts Hirb::Helpers::Table.render self.respond_to?(:length) ? self.to_a.map(&:as_json) : [self.as_json]
     end
   end
 end
+
+IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:PROMPT][:SIMPLE] = {
+  :PROMPT_I => ">> ",
+  :PROMPT_S => "%l> ",
+  :PROMPT_C => "%i> ",
+  :RETURN => "%s\n"
+}
+IRB.conf[:PROMPT_MODE]  = :SIMPLE
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:SAVE_HISTORY] = 999999
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
