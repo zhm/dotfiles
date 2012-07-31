@@ -23,3 +23,5 @@
 	email = zac.mccormick@gmail.com
 [github]
 	user = zhm
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
