@@ -5,7 +5,7 @@
 html=html.erb,html.haml,haml
 
 --type-add
-js=json
+js=json,coffee
 
 --type-add
 ruby=haml,rake
@@ -14,4 +14,13 @@ ruby=haml,rake
 css=sass,less,scss
 
 --type-set
+ejs=.ejs
+
+--type-set
+jade=.jade
+
+--type-set
 markdown=md,mkd,markdown
+
+--ignore-dir=.bundle
+--ignore-dir=coverage
